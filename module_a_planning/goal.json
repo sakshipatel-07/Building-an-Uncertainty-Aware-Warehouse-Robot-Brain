@@ -1,0 +1,12 @@
+{
+  "goal": [
+    "ON(B,A)",
+    "ON(C,B)",
+    "ON(E,D)",
+    "ONTABLE(A)",
+    "ONTABLE(D)",
+    "CLEAR(C)",
+    "CLEAR(E)",
+    "ARMEMPTY"
+  ]
+}

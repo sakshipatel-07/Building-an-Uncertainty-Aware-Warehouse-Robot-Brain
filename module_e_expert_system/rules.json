@@ -1,0 +1,200 @@
+[
+  {
+    "rule_id": "R01",
+    "name": "Wheel Slipping Rule",
+    "conditions": {
+      "high_motor_current": true,
+      "low_odometry_delta": true
+    },
+    "conclusion": "Fault: Wheel Slipping (Loss of Traction)",
+    "recommendation": "Inspect drive wheels for debris/oil; recalibrate traction controller.",
+    "explanation": "High motor current with low odometry delta indicates drive wheels spinning without forward displacement."
+  },
+  {
+    "rule_id": "R02",
+    "name": "Encoder Sensor Drift Rule",
+    "conditions": {
+      "imu_angular_velocity_high": true,
+      "wheel_encoder_delta_zero": true
+    },
+    "conclusion": "Fault: Wheel Encoder Sensor Drift / Cable Disconnect",
+    "recommendation": "Inspect encoder wiring harness and perform zero-point calibration.",
+    "explanation": "IMU detected high rotational velocity while wheel encoders registered zero pulses, proving encoder signal loss."
+  },
+  {
+    "rule_id": "R03",
+    "name": "Battery Cell Degradation Rule",
+    "conditions": {
+      "rapid_voltage_drop": true,
+      "nominal_load": true
+    },
+    "conclusion": "Fault: Battery Cell Degradation / High Internal Resistance",
+    "recommendation": "Isolate battery pack and schedule cell balancing / replacement.",
+    "explanation": "Voltage dropped rapidly under nominal (non-surge) current load, indicating elevated internal cell resistance."
+  },
+  {
+    "rule_id": "R04",
+    "name": "Motor Overheating Rule",
+    "conditions": {
+      "motor_temp_high": true,
+      "ambient_temp_normal": true
+    },
+    "conclusion": "Fault: Drive Motor Overheating / Stator Friction",
+    "recommendation": "Halt vehicle, check cooling fans, and inspect gearbox for mechanical binding.",
+    "explanation": "Drive motor core temperature exceeded 85C despite normal ambient conditions."
+  },
+  {
+    "rule_id": "R05",
+    "name": "Gripper Mechanism Jam Rule",
+    "conditions": {
+      "gripper_stall_current": true,
+      "gripper_sensor_unclosed": true
+    },
+    "conclusion": "Fault: Gripper Mechanical Jam",
+    "recommendation": "Check gripper jaws for foreign object obstruction; lubricate linear guides.",
+    "explanation": "Gripper motor drew stall current while optical limit switches indicated jaws never reached closed position."
+  },
+  {
+    "rule_id": "R06",
+    "name": "LiDAR Window Occlusion Rule",
+    "conditions": {
+      "lidar_zero_returns": true,
+      "robot_in_open_bay": true
+    },
+    "conclusion": "Fault: LiDAR Optical Window Dust Occlusion",
+    "recommendation": "Wipe safety LiDAR lens with optical microfiber cloth.",
+    "explanation": "LiDAR returned zero reflective points despite the robot being situated in a known open warehouse aisle."
+  },
+  {
+    "rule_id": "R07",
+    "name": "Camera Vision Sensor Drift Rule",
+    "conditions": {
+      "camera_blur_score_high": true,
+      "lighting_normal": true
+    },
+    "conclusion": "Fault: Vision Camera Focus Drift / Smudged Lens",
+    "recommendation": "Clean camera lens and run automated focal auto-calibration target.",
+    "explanation": "Camera image Laplacian variance dropped below sharpness threshold under normal warehouse illumination."
+  },
+  {
+    "rule_id": "R08",
+    "name": "Charging Dock Pin Corrosion Rule",
+    "conditions": {
+      "dock_contact_closed": true,
+      "zero_charge_current": true
+    },
+    "conclusion": "Fault: Charging Dock Contact Pin Oxidation / High Contact Resistance",
+    "recommendation": "Clean copper charging pads on robot underside and dock station pins.",
+    "explanation": "Mechanical limit switch confirmed dock engagement, but charge circuit drew 0.0A current."
+  },
+  {
+    "rule_id": "R09",
+    "name": "Cargo Overload Rule",
+    "conditions": {
+      "load_cell_weight_excessive": true,
+      "suspension_deflection_max": true
+    },
+    "conclusion": "Fault: Payload Capacity Exceeded (Overload)",
+    "recommendation": "Unload heaviest parcel immediately; verify cargo weight against 50kg limit.",
+    "explanation": "Both load cell transducers and chassis suspension sensors reached maximum mechanical limits."
+  },
+  {
+    "rule_id": "R10",
+    "name": "Emergency Stop Relay Trip Rule",
+    "conditions": {
+      "safety_circuit_open": true,
+      "bumper_impact_detected": true
+    },
+    "conclusion": "Fault: Safety Bumper Collision Trigger (E-Stop Active)",
+    "recommendation": "Inspect physical bumper for structural damage; perform manual safety reset.",
+    "explanation": "Safety bumper pressure strip opened the hardware emergency interlock loop."
+  },
+  {
+    "rule_id": "R11",
+    "name": "IMU Gyro Drift Rule",
+    "conditions": {
+      "heading_error_divergence": true,
+      "stationary_state": true
+    },
+    "conclusion": "Fault: IMU Gyro Bias Drift",
+    "recommendation": "Perform 30-second stationary gyro bias recalibration on flat ground.",
+    "explanation": "Heading state estimate accumulated angular rotation while vehicle was held in full mechanical brake."
+  },
+  {
+    "rule_id": "R12",
+    "name": "Gearbox Backlash / Wear Rule",
+    "conditions": {
+      "motor_vibration_high": true,
+      "acoustic_signature_abnormal": true
+    },
+    "conclusion": "Fault: Drive Gearbox Bearing Wear / Excessive Backlash",
+    "recommendation": "Schedule gearbox maintenance; inspect planetary gear teeth for pitting.",
+    "explanation": "High vibration spectrum coincided with acoustic peaks at gear mesh frequency."
+  },
+  {
+    "rule_id": "R13",
+    "name": "Thermal Throttling Intermediate Rule",
+    "conditions": {
+      "ambient_temp_high": true,
+      "heatsink_temp_high": true
+    },
+    "conclusion": "State: Thermal Throttling Engaged",
+    "recommendation": "Reduce maximum travel speed by 50% until system temperature normalizes.",
+    "explanation": "Ambient warehouse temperature combined with controller heatsink temperature exceeded thermal operating envelope."
+  },
+  {
+    "rule_id": "R14",
+    "name": "Wi-Fi Communication Dropout Rule",
+    "conditions": {
+      "ping_packet_loss_high": true,
+      "rssi_signal_low": true
+    },
+    "conclusion": "Fault: Warehouse Fleet Network Dead Zone / RF Interference",
+    "recommendation": "Switch to redundant sub-GHz channel; navigate to nearest Wi-Fi access point.",
+    "explanation": "Consecutive packet loss exceeded 80% while RSSI dropped below -85 dBm."
+  },
+  {
+    "rule_id": "R15",
+    "name": "Hydraulic / Pneumatic Pressure Loss Rule",
+    "conditions": {
+      "manifold_pressure_low": true,
+      "pump_duty_cycle_max": true
+    },
+    "conclusion": "Fault: Lift System Pneumatic Pressure Leak",
+    "recommendation": "Check high-pressure quick-connect lines and check valves for air leakage.",
+    "explanation": "Lift manifold pressure failed to reach 6 bar despite auxiliary compressor operating at 100% duty cycle."
+  },
+  {
+    "rule_id": "R16",
+    "name": "Watchdog Firmware Timeout Rule",
+    "conditions": {
+      "can_bus_error_passive": true,
+      "heartbeat_missing": true
+    },
+    "conclusion": "Fault: Subsystem Microcontroller Crash / CAN Bus Lockup",
+    "recommendation": "Cycle 24V bus power; pull crash dump logs from secondary flash memory.",
+    "explanation": "Node heartbeat frames stopped arriving on CAN bus; transceiver entered error-passive mode."
+  },
+  {
+    "rule_id": "R17",
+    "name": "Compound Drivetrain Failure Rule",
+    "conditions": {
+      "Fault: Wheel Slipping (Loss of Traction)": true,
+      "motor_temp_high": true
+    },
+    "conclusion": "CRITICAL FAULT: Severe Drivetrain Lockup & Thermal Hazard",
+    "recommendation": "Immediately cut main power contactor; tow robot to maintenance shop.",
+    "explanation": "Continuous wheel slipping sustained high motor current, causing secondary motor thermal runaway."
+  },
+  {
+    "rule_id": "R18",
+    "name": "Compound Dock Contention Starvation Rule",
+    "conditions": {
+      "battery_voltage_critical": true,
+      "dock_unavailable": true
+    },
+    "conclusion": "CRITICAL FAULT: Power Starvation (Autonomous Shutdown Imminent)",
+    "recommendation": "Deploy manual technician with portable charger or dispatch reserve towing bot.",
+    "explanation": "Battery voltage reached critical cut-off threshold while charging dock was contested/occupied."
+  }
+]

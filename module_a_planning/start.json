@@ -1,0 +1,15 @@
+{
+  "state": [
+    "ONTABLE(A)",
+    "ONTABLE(B)",
+    "ONTABLE(C)",
+    "ONTABLE(D)",
+    "ONTABLE(E)",
+    "CLEAR(A)",
+    "CLEAR(B)",
+    "CLEAR(C)",
+    "CLEAR(D)",
+    "CLEAR(E)",
+    "ARMEMPTY"
+  ]
+}
